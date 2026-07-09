@@ -1,0 +1,74 @@
+.friends-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 720px) {
+  .friends-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 440px) {
+  .friends-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.friend-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #f7f8ff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px 16px;
+  height: 100%;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.friend-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(82, 113, 255, 0.18);
+  border-color: rgba(82, 113, 255, 0.5);
+}
+
+.friend-av {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  margin-bottom: 12px;
+}
+
+.friend-name {
+  font-family: var(--heading);
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.friend-desc {
+  color: var(--text-soft);
+  font-size: 13.5px;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.friend-link {
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-blue);
+}
+
+.friend-card:hover .friend-link {
+  color: var(--c-black);
+}

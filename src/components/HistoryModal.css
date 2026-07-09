@@ -1,0 +1,67 @@
+.history {
+  list-style: none;
+  padding: 0 0 0 6px;
+  margin: 0;
+  position: relative;
+}
+
+/* 連起來的縱線 */
+.history::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 14px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--c-blue), rgba(82, 113, 255, 0.2));
+}
+
+.history-item {
+  position: relative;
+  padding-left: 44px;
+  padding-bottom: 26px;
+}
+
+.history-item:last-child {
+  padding-bottom: 4px;
+}
+
+.history-dot {
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--c-white);
+  border: 3px solid var(--c-blue);
+  box-shadow: 0 0 0 4px rgba(82, 113, 255, 0.15);
+}
+
+.history-year {
+  display: inline-block;
+  font-family: var(--heading);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--c-blue);
+  background: rgba(82, 113, 255, 0.1);
+  padding: 2px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.history-title {
+  font-family: var(--heading);
+  font-size: clamp(18px, 2.4vw, 22px);
+  font-weight: 900;
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.history-body p {
+  color: var(--text-soft);
+  font-size: 15px;
+  line-height: 1.7;
+}

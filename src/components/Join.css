@@ -1,0 +1,27 @@
+.join {
+  padding-block: var(--section-pad-y);
+  background: #f6f7ff;
+}
+
+.join-frame {
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 36px rgba(82, 113, 255, 0.12);
+  background: var(--c-white);
+}
+
+.join-iframe {
+  width: 100%;
+  border: 0;
+  height: 1280px;
+  display: block;
+  background: var(--c-white);
+}
+
+@media (max-width: 640px) {
+  .join-iframe { height: 1480px; }
+}

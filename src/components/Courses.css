@@ -1,0 +1,133 @@
+.courses {
+  padding-block: var(--section-pad-y);
+  background: var(--c-white);
+}
+
+.courses-head {
+  max-width: var(--maxw);
+  margin: 0 auto var(--section-pad-y);
+}
+
+.courses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.course-row {
+  position: relative;
+  width: 100%;
+  height: clamp(220px, 38vw, 360px);
+  border-radius: 20px;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transform: translateX(var(--shift, 0));
+  transition: transform 0.15s linear;
+  background: #111;
+}
+
+.course-row img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.course-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.78) 0%,
+    rgba(0, 0, 0, 0.55) 50%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  backdrop-filter: blur(2px);
+}
+
+.course-content {
+  position: relative;
+  z-index: 2;
+  padding: clamp(24px, 5vw, 56px);
+  max-width: 560px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--c-white);
+}
+
+.course-no {
+  font-family: var(--heading);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--c-blue);
+  margin-bottom: 8px;
+}
+
+.course-content h3 {
+  color: var(--c-white);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 900;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.course-content h3 em {
+  font-style: normal;
+  font-size: clamp(14px, 1.6vw, 18px);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.04em;
+}
+
+.course-content p {
+  margin-top: 16px;
+  font-size: clamp(15px, 1.5vw, 17px);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+}
+
+.course-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.course-tags li {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(82, 113, 255, 0.25);
+  color: #c8d4ff;
+  border: 1px solid rgba(124, 148, 255, 0.45);
+}
+
+@media (max-width: 640px) {
+  .course-row {
+    height: clamp(280px, 80vw, 420px);
+  }
+  .course-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
+  }
+  .course-content {
+    max-width: 100%;
+  }
+  .course-content p {
+    max-height: 6em;
+    overflow: hidden;
+  }
+}
