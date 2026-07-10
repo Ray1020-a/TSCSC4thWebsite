@@ -22,7 +22,7 @@ export default function FriendsModal({ open, onClose }: FriendsModalProps) {
     <Modal
       open={open}
       onClose={onClose}
-      title="友社"
+      title="友社及合作社群"
       subtitle="感謝一路相伴的夥伴，點擊卡片可前往他們的社群。"
     >
       <ul className="friends-grid">

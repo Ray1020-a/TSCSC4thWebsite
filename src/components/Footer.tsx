@@ -44,7 +44,7 @@ export default function Footer() {
             社團歷程
           </button>
           <button type="button" onClick={() => setFriends(true)}>
-            友社
+            友社及合作社群
           </button>
         </div>
 
