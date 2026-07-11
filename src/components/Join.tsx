@@ -21,6 +21,18 @@ export default function Join() {
             loading="lazy"
           />
         </div>
+        
+        <p className="join-fallback">
+          表單無法顯示？請點擊{' '}
+          <a
+            href={FORM_SRC}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            此連結
+          </a>{' '}
+          直接填寫表單。
+        </p>
       </div>
     </section>
   )
