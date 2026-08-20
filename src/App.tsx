@@ -11,12 +11,18 @@ function App() {
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
-    if (window.location.pathname === '/join') {
-      window.location.replace('https://docs.google.com/forms/d/e/1FAIpQLSd5xF2xHdWW-NV50dzmbj64lIYYCvMxXeKzae2MmiqiQC_J3g/viewform?usp=dialog')
+    if (window.location.pathname.endsWith('/join')) {
+      window.location.replace(
+        'https://docs.google.com/forms/d/e/1FAIpQLSd5xF2xHdWW-NV50dzmbj64lIYYCvMxXeKzae2MmiqiQC_J3g/viewform?usp=dialog'
+      )
       return
     }
 
     document.body.style.overflow = ready ? '' : 'hidden'
+
+    return () => {
+      document.body.style.overflow = ''
+    }
   }, [ready])
 
   return (
