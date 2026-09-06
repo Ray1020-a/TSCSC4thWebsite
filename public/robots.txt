@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tscsc.tschoolsu.org/sitemap.xml
