@@ -19,7 +19,9 @@
 }
 
 .footer-logo {
+  width: 44px;
   height: 44px;
+  object-fit: contain;
   filter: brightness(0) invert(1);
 }
 
@@ -37,7 +39,13 @@
 
 .footer-links {
   display: flex;
-  gap: 22px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links-row {
+  display: flex;
+  gap: 8px 22px;
   flex-wrap: wrap;
 }
 
@@ -92,6 +100,15 @@
   font-size: 14px;
   color: rgba(255, 255, 255, 0.82);
   font-weight: 600;
+}
+
+.footer-links a:focus-visible,
+.footer-links button:focus-visible,
+.footer-email:focus-visible,
+.footer-social a:focus-visible {
+  outline: 2px solid var(--c-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 .footer-email:hover {

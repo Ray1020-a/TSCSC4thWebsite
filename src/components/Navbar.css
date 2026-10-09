@@ -28,6 +28,12 @@
   display: inline-flex;
 }
 
+.nav-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .nav-logo {
   width: 50px;
   height: 50px;
@@ -141,15 +147,21 @@
     max-height: 0;
     overflow: hidden;
     opacity: 0;
+    /* 收合時不可見也不可點擊，避免擋住下方內容 */
+    visibility: hidden;
     transition:
       max-height 0.3s ease,
       opacity 0.3s ease,
-      padding 0.3s ease;
+      visibility 0s linear 0.3s;
   }
 
   .nav-menu.open {
     max-height: 360px;
     opacity: 1;
+    visibility: visible;
+    transition:
+      max-height 0.3s ease,
+      opacity 0.3s ease;
   }
 
   .nav-menu a {
@@ -165,8 +177,4 @@
   .nav-menu a::after {
     display: none;
   }
-}
-
-@media (max-width: 480px) {
-  .section-label { font-size: 12px; }
 }

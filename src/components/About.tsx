@@ -6,7 +6,14 @@ export default function About() {
       <div className="container about-inner">
         <div className="about-left">
           <div className="about-logo-wrap">
-            <img src="/nbglogo.png" alt="TSCSC logo" className="about-logo" />
+            <img
+              src="/nbglogo.png"
+              alt="TSCSC logo"
+              className="about-logo"
+              width="282"
+              height="282"
+              fetchPriority="high"
+            />
           </div>
         </div>
         <div className="about-right">
@@ -16,9 +23,7 @@ export default function About() {
             <br />
             <span className="about-hl">資訊研究社</span>
           </h1>
-          <p>
-            來自數位實中一群對資訊充滿熱情的人們，
-          </p>
+          <p>來自數位實中一群對資訊充滿熱情的人們，</p>
           <p>
             我們在自由的時間與空間內，<br />創造出屬於我們的交流天地。
           </p>

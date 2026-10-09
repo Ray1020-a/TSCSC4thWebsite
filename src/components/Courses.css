@@ -3,11 +3,6 @@
   background: var(--c-white);
 }
 
-.courses-head {
-  max-width: var(--maxw);
-  margin: 0 auto var(--section-pad-y);
-}
-
 .courses-list {
   display: flex;
   flex-direction: column;
@@ -16,24 +11,31 @@
 
 .course-row {
   position: relative;
-  width: 100%;
-  height: clamp(220px, 38vw, 360px);
+  min-height: clamp(260px, 32vw, 360px);
   border-radius: 20px;
   overflow: hidden;
   isolation: isolate;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  transform: translateX(var(--shift, 0));
-  transition: transform 0.15s linear;
   background: #111;
+  display: flex;
 }
 
+/* 照片比卡片高一些，捲動時在卡片內做輕微視差，不會露出邊界 */
 .course-row img {
   position: absolute;
-  inset: 0;
+  inset: -28px 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% + 56px);
+  max-width: none;
   object-fit: cover;
   z-index: 0;
+  transform: translateY(var(--shift, 0px)) scale(1.02);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.course-row:hover img {
+  transform: translateY(var(--shift, 0px)) scale(1.06);
 }
 
 .course-overlay {
@@ -42,19 +44,17 @@
   z-index: 1;
   background: linear-gradient(
     90deg,
-    rgba(0, 0, 0, 0.78) 0%,
+    rgba(0, 0, 0, 0.8) 0%,
     rgba(0, 0, 0, 0.55) 50%,
-    rgba(0, 0, 0, 0.25) 100%
+    rgba(0, 0, 0, 0.2) 100%
   );
-  backdrop-filter: blur(2px);
 }
 
 .course-content {
   position: relative;
   z-index: 2;
   padding: clamp(24px, 5vw, 56px);
-  max-width: 560px;
-  height: 100%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -66,7 +66,7 @@
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.2em;
-  color: var(--c-blue);
+  color: #8ea2ff;
   margin-bottom: 8px;
 }
 
@@ -76,7 +76,7 @@
   font-weight: 900;
   display: flex;
   align-items: baseline;
-  gap: 14px;
+  gap: 4px 14px;
   flex-wrap: wrap;
 }
 
@@ -91,7 +91,7 @@
 .course-content p {
   margin-top: 16px;
   font-size: clamp(15px, 1.5vw, 17px);
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.88);
   line-height: 1.7;
 }
 
@@ -114,20 +114,24 @@
 
 @media (max-width: 640px) {
   .course-row {
-    height: clamp(280px, 80vw, 420px);
+    min-height: 0;
+    border-radius: 16px;
   }
   .course-overlay {
     background: linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(0, 0, 0, 0.8) 100%
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.82) 100%
     );
   }
   .course-content {
     max-width: 100%;
+    padding: 28px 22px;
   }
-  .course-content p {
-    max-height: 6em;
-    overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .course-row img {
+    transition: none;
   }
 }

@@ -3,17 +3,11 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
-@media (max-width: 720px) {
-  .friends-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 440px) {
+@media (max-width: 560px) {
   .friends-grid {
     grid-template-columns: 1fr;
   }
@@ -67,6 +61,11 @@
   font-size: 13px;
   font-weight: 700;
   color: var(--c-blue);
+}
+
+.friend-card:focus-visible {
+  outline: 3px solid var(--c-blue);
+  outline-offset: 2px;
 }
 
 .friend-card:hover .friend-link {

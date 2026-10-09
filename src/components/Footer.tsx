@@ -27,26 +27,36 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <img src="/nbglogo.png" alt="" className="footer-logo" />
+          <img
+            src="/nbglogo.png"
+            alt=""
+            className="footer-logo"
+            width="44"
+            height="44"
+            loading="lazy"
+          />
           <div>
             <b>T-School Computer Science Club</b>
             <span>臺北市數位實驗高中資訊研究社 · 第 4 屆</span>
           </div>
         </div>
 
-        <div className="footer-links">
-          <a href="#about">關於我們</a>
-          <a href="#courses">社課簡介</a>
-          <a href="#team">幹部簡介</a>
-          <a href="#join">入社登記</a>
-          <br />
-          <button type="button" onClick={() => setHistory(true)}>
-            社團歷程
-          </button>
-          <button type="button" onClick={() => setFriends(true)}>
-            友社及合作社群
-          </button>
-        </div>
+        <nav className="footer-links" aria-label="頁尾導覽">
+          <div className="footer-links-row">
+            <a href="#about">關於我們</a>
+            <a href="#courses">社課簡介</a>
+            <a href="#team">幹部簡介</a>
+            <a href="#join">入社登記</a>
+          </div>
+          <div className="footer-links-row">
+            <button type="button" onClick={() => setHistory(true)}>
+              社團歷程
+            </button>
+            <button type="button" onClick={() => setFriends(true)}>
+              友社及合作社群
+            </button>
+          </div>
+        </nav>
 
         <div className="footer-contact">
           <div className="footer-social">
@@ -55,7 +65,7 @@ export default function Footer() {
                 key={s.label}
                 href={s.href}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label={s.label}
               >
                 {s.icon}

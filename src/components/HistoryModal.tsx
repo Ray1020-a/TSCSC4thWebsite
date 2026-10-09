@@ -24,6 +24,7 @@ export default function HistoryModal({ open, onClose }: HistoryModalProps) {
     <Modal
       open={open}
       onClose={onClose}
+      label="History"
       title="社團歷程"
       subtitle="一路走來，從種子到森林。成為數位實中元老社團！"
     >

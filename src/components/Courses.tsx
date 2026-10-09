@@ -34,37 +34,39 @@ const COURSES: Course[] = [
 ]
 
 export default function Courses() {
-  const sectionRef = useRef<HTMLElement>(null)
   const itemsRef = useRef<(HTMLElement | null)[]>([])
 
   useEffect(() => {
-    const onScroll = () => {
-      const sec = sectionRef.current
-      if (!sec) return
-      const rect = sec.getBoundingClientRect()
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    let raf = 0
+    const update = () => {
+      raf = 0
       const vh = window.innerHeight
-      // progress: 0 when section enters, 1 when section leaves
-      const total = rect.height + vh
-      const scrolled = Math.min(Math.max(vh - rect.top, 0), total)
-      const progress = scrolled / total
-      itemsRef.current.forEach((_, i) => {
-        const dir = i % 2 === 0 ? 1 : -1
-        const px = (progress - 0.5) * dir * 40
-        const el = itemsRef.current[i]
-        if (el) el.style.setProperty('--shift', `${px}px`)
+      itemsRef.current.forEach((el) => {
+        if (!el) return
+        const rect = el.getBoundingClientRect()
+        if (rect.bottom < 0 || rect.top > vh) return
+        // -1 when the card is at the bottom of the viewport, 1 at the top
+        const progress = 1 - (rect.top + rect.height / 2) / (vh / 2)
+        el.style.setProperty('--shift', `${(progress * 24).toFixed(1)}px`)
       })
     }
-    onScroll()
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+    update()
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onScroll)
     return () => {
+      cancelAnimationFrame(raf)
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onScroll)
     }
   }, [])
 
   return (
-    <section id="courses" ref={sectionRef} className="courses">
+    <section id="courses" className="courses">
       <div className="container courses-head">
         <span className="section-label">Courses</span>
         <h2 className="section-title">社課簡介</h2>
@@ -73,14 +75,13 @@ export default function Courses() {
         </p>
       </div>
 
-      <div className="courses-list">
+      <div className="container courses-list">
         {COURSES.map((c, i) => (
           <article
             key={c.title}
             className="course-row"
-            style={{ '--shift': '0px' } as React.CSSProperties}
             ref={(el) => {
-              if (el) itemsRef.current[i] = el
+              itemsRef.current[i] = el
             }}
           >
             <img src={c.img} alt="" loading="lazy" />

@@ -1,7 +1,8 @@
 import './Join.css'
 
-const FORM_SRC =
-  'https://docs.google.com/forms/d/e/1FAIpQLSde848dAX6wyKy4dSnB1E3CsY7w97PPQfj8p59kxY9JEd10VA/viewform?embedded=true'
+const FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSde848dAX6wyKy4dSnB1E3CsY7w97PPQfj8p59kxY9JEd10VA/viewform'
+const FORM_SRC = `${FORM_URL}?embedded=true`
 
 export default function Join() {
   return (
@@ -21,11 +22,11 @@ export default function Join() {
             loading="lazy"
           />
         </div>
-        
+
         <p className="join-fallback">
           表單無法顯示？請點擊{' '}
           <a
-            href={FORM_SRC}
+            href={FORM_URL}
             target="_blank"
             rel="noopener noreferrer"
           >

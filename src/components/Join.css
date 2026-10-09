@@ -26,11 +26,11 @@
   margin-top: 1.25rem;
   text-align: center;
   font-size: 0.95rem;
-  color: var(--c-muted, #666);
+  color: var(--text-soft);
 }
 
 .join-fallback a {
-  color: var(--c-primary, #5271ff);
+  color: var(--c-blue);
   text-decoration: underline;
   font-weight: 600;
 }
@@ -41,5 +41,6 @@
 }
 
 @media (max-width: 640px) {
-  .join-iframe { height: 1480px; }
+  .join-frame { border-radius: 16px; }
+  .join-iframe { height: 1400px; }
 }

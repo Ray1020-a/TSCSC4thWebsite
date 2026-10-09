@@ -5,8 +5,7 @@
 }
 
 .team-head {
-  text-align: left;
-  margin-bottom: 48px;
+  margin-bottom: 8px;
 }
 
 .team-viewport {
@@ -32,15 +31,27 @@
 
 .team-track {
   display: flex;
-  gap: 28px;
   width: max-content;
-  padding-inline: var(--section-pad-x);
-  will-change: transform;
+  animation: team-marquee calc(var(--copies) * 9s) linear infinite;
+}
+
+/* 每次位移一組成員的寬度，接上下一組時畫面無縫 */
+@keyframes team-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-100% / var(--copies))); }
+}
+
+.team-viewport:hover .team-track,
+.team-viewport:focus-within .team-track,
+.team-viewport.is-paused .team-track {
+  animation-play-state: paused;
 }
 
 .team-card {
   flex: 0 0 auto;
   width: 180px;
+  /* 用 margin 而非 gap，讓每組寬度一致，動畫才會無縫 */
+  margin-right: 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,6 +79,11 @@
 
 .team-avatar-btn:hover {
   transform: translateY(-3px) scale(1.04);
+}
+
+.team-avatar-btn:focus-visible {
+  outline: 3px solid var(--c-blue);
+  outline-offset: 3px;
 }
 
 .team-card.active .team-avatar-btn {
@@ -266,5 +282,26 @@
     width: 110px;
     height: 110px;
   }
-  .team-card { width: 150px; }
+  .team-card {
+    width: 150px;
+    margin-right: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-viewport {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .team-track {
+    animation: none;
+    padding-inline: var(--section-pad-x);
+  }
+  .team-card[aria-hidden='true'] {
+    display: none;
+  }
+  .team-sparkle i {
+    animation: none;
+  }
 }

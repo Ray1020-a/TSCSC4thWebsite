@@ -25,14 +25,22 @@ export default function FriendsModal({ open, onClose }: FriendsModalProps) {
     <Modal
       open={open}
       onClose={onClose}
+      label="Friends"
       title="友社及合作社群"
       subtitle="感謝一路相伴的夥伴，點擊卡片可前往他們的社群。"
     >
       <ul className="friends-grid">
         {FRIENDS.map((f) => (
           <li key={f.name}>
-            <a className="friend-card" href={f.href} target="_blank" rel="noreferrer">
-              <img src={f.avatar} alt={f.name} className="friend-av" />
+            <a className="friend-card" href={f.href} target="_blank" rel="noopener noreferrer">
+              <img
+                src={f.avatar}
+                alt=""
+                className="friend-av"
+                width="84"
+                height="84"
+                loading="lazy"
+              />
               <b className="friend-name">{f.name}</b>
               <p className="friend-desc">{f.desc}</p>
               <span className="friend-link">前往 →</span>
